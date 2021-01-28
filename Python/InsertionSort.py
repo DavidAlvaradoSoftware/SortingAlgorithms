@@ -16,20 +16,18 @@ def main():
     unsorted_array = random.randint(500, size=(args.length))
     print("Unsorted Array: ", unsorted_array)
     
-    selection_sort(unsorted_array)
+    insertion_sort(unsorted_array)
 
-def selection_sort(unsorted_array):
-    array_length = len(unsorted_array)
+def insertion_sort(unsorted_array):
+    for number in range(1,len(unsorted_array)):
+        value = unsorted_array[number]
+        hole = number
+        while hole > 0 and unsorted_array[hole-1] > value:
+            unsorted_array[hole] = unsorted_array[hole-1]
+            hole = hole - 1
+        unsorted_array[hole] = value
 
-    for index in range(array_length):
-        for sub_index in range(index, array_length):
-            if unsorted_array[index] > unsorted_array[sub_index]:
-                current_element = unsorted_array[index]
-                unsorted_array[index] = unsorted_array[sub_index]
-                unsorted_array[sub_index] = current_element
-
-    print("Selection Sorted Array: ", unsorted_array)
-
+    print("Insertion Sorted Array: ", unsorted_array)
 
 
 if __name__ == "__main__":

@@ -3,7 +3,6 @@ import argparse
 from numpy import random
 
 
-
 def main():
     parser = argparse.ArgumentParser(description='Sorts a randomly generated array of integers')
     parser.add_argument('-l', '--length', type=int, help ='length of array to be generated')
@@ -15,21 +14,18 @@ def main():
 
     unsorted_array = random.randint(500, size=(args.length))
     print("Unsorted Array: ", unsorted_array)
+
+    bubble_sort(unsorted_array)
+
+def bubble_sort(unsorted_array):
+    for index in range(len(unsorted_array)):
+        for sub_index in range(0, len(unsorted_array)-2):
+            if (unsorted_array[sub_index] > unsorted_array[sub_index+1]):
+                value = unsorted_array[sub_index+1]
+                unsorted_array[sub_index+1] = unsorted_array[sub_index]
+                unsorted_array[sub_index] = value
     
-    selection_sort(unsorted_array)
-
-def selection_sort(unsorted_array):
-    array_length = len(unsorted_array)
-
-    for index in range(array_length):
-        for sub_index in range(index, array_length):
-            if unsorted_array[index] > unsorted_array[sub_index]:
-                current_element = unsorted_array[index]
-                unsorted_array[index] = unsorted_array[sub_index]
-                unsorted_array[sub_index] = current_element
-
-    print("Selection Sorted Array: ", unsorted_array)
-
+    print("Bubble Sorted Array: ",unsorted_array)
 
 
 if __name__ == "__main__":
